@@ -11,6 +11,9 @@ import './style.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+const { RichText, PlainText, MediaUpload, MediaUploadCheck } = wp.blockEditor;
+const { SelectControl } = wp.components;
+
 
 /**
  * Register: aa Gutenberg Block.
@@ -25,7 +28,7 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'cgb/block-hw-block', {
+registerBlockType( 'hw-block/block-hw-block', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'HW Block' ), // Block title.
 	icon: 'book-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
@@ -33,6 +36,27 @@ registerBlockType( 'cgb/block-hw-block', {
 	keywords: [
 		__( 'hw-block' ),
 	],
+	attributes: {
+		title: {
+			type: 'string',
+			source: 'text',
+			selector: '.project-title',
+		},
+		description: {
+			type: 'string',
+			source: 'html',
+			selector: '.project-description',
+		},
+		link: {
+			type: 'string',
+			source: 'html',
+			selector: '.project-link',
+		},
+		imgUrl: {
+			type: 'string',
+			default: 'https://placehold.it/100'
+		},
+	},
 
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -46,10 +70,25 @@ registerBlockType( 'cgb/block-hw-block', {
 	 * @returns {Mixed} JSX Component.
 	 */
 	edit: ( props ) => {
+		let { attributes: { title, description, link, imgUrl }, setAttributes, className } = props;
+
+		function changeTitle(value){
+			setAttributes( { title: value } );
+		}
+		function changeDescription(value){
+			setAttributes( { description: value } );
+		}
+		function changeLink(value){
+			setAttributes( { link: value } );
+		}
+		function selectImage(value){
+			setAttributes( { imgUrl: value.sizes.thumbnail.url } );
+		}
+
 		// Creates a <p class='wp-block-cgb-block-hw-block'></p>.
 		return (
 			<div className={ props.className }>
-				
+			
 			</div>
 		);
 	},
@@ -67,7 +106,7 @@ registerBlockType( 'cgb/block-hw-block', {
 	 */
 	save: ( props ) => {
 		return (
-			<div className={ props.className }>
+			<div className={props.className}>
 				
 			</div>
 		);
