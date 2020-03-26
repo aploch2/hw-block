@@ -99,7 +99,8 @@ registerBlockType( 'hw-block/block-hw-block', {
 				<RichText
 					className="project-description"
 					tagName="div"
-					value={changeDescription}
+					onChange={changeDescription}
+					value={ description }
 					placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias accusantium, quidem earum expedita dignissimos dicta numquam suscipit, porro illum atque error obcaecati tempore? Qui, natus."
 				/>
 				<div className="photo-link">
@@ -136,7 +137,23 @@ registerBlockType( 'hw-block/block-hw-block', {
 	save: ( props ) => {
 		return (
 			<div className={props.className}>
-				
+				<div className="text">
+					<h3>{ props.attributes.title }</h3>
+				</div>
+				<RichText.Content
+					className="project-description"
+					tagName="div"
+					value={ props.attributes.description }
+					
+				/>
+				<div className="photo-link">
+					<div className="photo">
+						<img src={ props.attributes.imgUrl } />
+					</div>
+					<div className="project-link-container">
+						<a href={ props.attributes.link } target="blank_">Project Link</a>
+					</div>
+				</div>
 			</div>
 		);
 	},
