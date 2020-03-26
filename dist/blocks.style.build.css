@@ -10,9 +10,5 @@
  * CSS for both Frontend+Backend.
  */
 .wp-block-hw-block-block-hw-block {
-  background: orangered;
-  border: 0.2rem solid #292929;
-  color: #292929;
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 2rem; }
+  border-bottom: 1px solid #000;
+  margin-bottom: 25px; }
