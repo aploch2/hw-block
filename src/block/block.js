@@ -87,8 +87,37 @@ registerBlockType( 'hw-block/block-hw-block', {
 
 		// Creates a <p class='wp-block-cgb-block-hw-block'></p>.
 		return (
-			<div className={ props.className }>
-			
+			<div className={props.className}>
+				<div className="text">
+					<PlainText
+						className="project-title"
+						value={title}
+						onChange={changeTitle}
+						placeholder="Project Title"
+					/>
+				</div>
+				<RichText
+					className="project-description"
+					tagName="div"
+					value={changeDescription}
+					placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias accusantium, quidem earum expedita dignissimos dicta numquam suscipit, porro illum atque error obcaecati tempore? Qui, natus."
+				/>
+				<div className="photo-link">
+					<div className="photo">
+						<MediaUploadCheck>
+							<MediaUpload 
+								onSelect={ selectImage }
+								render={ ( { open } ) => <img src={ imgUrl } onClick={ open } /> }
+							/>
+						</MediaUploadCheck>
+					</div>
+					<PlainText
+						className="project-link"
+						value={link}
+						onChange={changeLink}
+						placeholder="Project Link"
+					/>
+				</div>
 			</div>
 		);
 	},
