@@ -10,3 +10,16 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
+.wp-block-hw-block-block-hw-block .editor-plain-text {
+  border: 2px solid #bfbfbf;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 15px; }
+
+.wp-block-hw-block-block-hw-block .rich-text {
+  border: 2px solid #bfbfbf;
+  border-radius: 3px;
+  padding: 10px; }
+
+.wp-block-hw-block-block-hw-block .project-titles {
+  margin: 0; }

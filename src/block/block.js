@@ -82,13 +82,14 @@ registerBlockType( 'hw-block/block-hw-block', {
 			setAttributes( { link: value } );
 		}
 		function selectImage(value){
-			setAttributes( { imgUrl: value.sizes.thumbnail.url } );
+			setAttributes( { imgUrl: value.sizes.medium.url } );
 		}
 
 		// Creates a <p class='wp-block-cgb-block-hw-block'></p>.
 		return (
 			<div className={props.className}>
 				<div className="text">
+					<p className="project-titles">Project Title</p>
 					<PlainText
 						className="project-title"
 						value={title}
@@ -96,22 +97,24 @@ registerBlockType( 'hw-block/block-hw-block', {
 						placeholder="Project Title"
 					/>
 				</div>
+				<p className="project-titles">Project Description</p>
 				<RichText
 					className="project-description"
 					tagName="div"
 					onChange={changeDescription}
-					value={ description }
+					value={description}
 					placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias accusantium, quidem earum expedita dignissimos dicta numquam suscipit, porro illum atque error obcaecati tempore? Qui, natus."
 				/>
 				<div className="photo-link">
 					<div className="photo">
 						<MediaUploadCheck>
-							<MediaUpload 
-								onSelect={ selectImage }
-								render={ ( { open } ) => <img src={ imgUrl } onClick={ open } /> }
+							<MediaUpload
+								onSelect={selectImage}
+								render={({ open }) => <img src={imgUrl} onClick={open} />}
 							/>
 						</MediaUploadCheck>
 					</div>
+					<p className="project-titles">Project Link</p>
 					<PlainText
 						className="project-link"
 						value={link}
@@ -151,7 +154,7 @@ registerBlockType( 'hw-block/block-hw-block', {
 						<img src={ props.attributes.imgUrl } />
 					</div>
 					<div className="project-link-container">
-						<a href={ props.attributes.link } target="blank_">Project Link</a>
+						<a href={ props.attributes.link } target="blank_" className="project-link-button">Project Link</a>
 					</div>
 				</div>
 			</div>

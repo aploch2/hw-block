@@ -7,4 +7,18 @@
 
 .wp-block-hw-block-block-hw-block  {
   
+  .editor-plain-text {
+    border: 2px solid lighten($black, 75%);
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  .rich-text {
+    border: 2px solid lighten($black, 75%);
+    border-radius: 3px;
+    padding: 10px;
+  }
+  .project-titles {
+    margin: 0;
+  }
 }

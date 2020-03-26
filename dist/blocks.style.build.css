@@ -11,4 +11,23 @@
  */
 .wp-block-hw-block-block-hw-block {
   border-bottom: 1px solid #000;
-  margin-bottom: 25px; }
+  margin-bottom: 25px;
+  padding: 25px 0; }
+  .wp-block-hw-block-block-hw-block .project-description {
+    margin-bottom: 25px; }
+  .wp-block-hw-block-block-hw-block .project-link-container {
+    margin-top: 25px; }
+    .wp-block-hw-block-block-hw-block .project-link-container .project-link-button {
+      padding: 10px 20px;
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 3px;
+      -webkit-transition: 0.3 ease-in-out;
+      -o-transition: 0.3 ease-in-out;
+      transition: 0.3 ease-in-out; }
+      .wp-block-hw-block-block-hw-block .project-link-container .project-link-button:hover {
+        background-color: gray;
+        -webkit-transition: 0.3 ease-in-out;
+        -o-transition: 0.3 ease-in-out;
+        transition: 0.3 ease-in-out; }

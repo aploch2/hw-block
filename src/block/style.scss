@@ -7,4 +7,26 @@
 .wp-block-hw-block-block-hw-block  {
   border-bottom: 1px solid $black;
   margin-bottom: 25px;
+  padding: 25px 0;
+
+  .project-description {
+    margin-bottom: 25px;
+  }
+  .project-link-container {
+    margin-top: 25px;
+
+    .project-link-button {
+      padding: 10px 20px;
+      background-color: $black;
+      color: $white;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: 0.3 ease-in-out;
+
+        &:hover {
+          background-color: lighten($black, 50%);
+          transition: 0.3 ease-in-out;
+        }
+    }
+  }
 }
