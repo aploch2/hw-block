@@ -4,13 +4,19 @@
  * CSS for both Frontend+Backend.
  */
 
-.wp-block-hw-block-block-hw-block  {
+.wp-block-hw-plugin-block-hw-block  {
   border-bottom: 1px solid $black;
   margin-bottom: 25px;
   padding: 25px 0;
 
-  .project-description {
-    margin-bottom: 25px;
+  .description-photo {
+    display: flex;
+    justify-content: space-between;
+
+      .description-container {
+        margin-bottom: 25px;
+        width: 50%;
+      }
   }
   .project-link-container {
     margin-top: 25px;

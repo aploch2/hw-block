@@ -28,7 +28,7 @@ const { SelectControl } = wp.components;
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'hw-block/block-hw-block', {
+registerBlockType( 'hw-plugin/block-hw-block', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'HW Block' ), // Block title.
 	icon: 'book-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
@@ -54,7 +54,7 @@ registerBlockType( 'hw-block/block-hw-block', {
 		},
 		imgUrl: {
 			type: 'string',
-			default: 'https://placehold.it/100'
+			default: 'https://placehold.it/75',
 		},
 	},
 
@@ -97,23 +97,29 @@ registerBlockType( 'hw-block/block-hw-block', {
 						placeholder="Project Title"
 					/>
 				</div>
-				<p className="project-titles">Project Description</p>
-				<RichText
-					className="project-description"
-					tagName="div"
-					onChange={changeDescription}
-					value={description}
-					placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias accusantium, quidem earum expedita dignissimos dicta numquam suscipit, porro illum atque error obcaecati tempore? Qui, natus."
-				/>
-				<div className="photo-link">
-					<div className="photo">
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={selectImage}
-								render={({ open }) => <img src={imgUrl} onClick={open} />}
-							/>
-						</MediaUploadCheck>
+				<div className="description-photo">
+					<div className="photo-container">
+						<div className="photo">
+							<MediaUploadCheck>
+								<MediaUpload
+									onSelect={selectImage}
+									render={ ({ open }) => <img src={imgUrl} onClick={open} />}
+								/>
+							</MediaUploadCheck>
+						</div>
 					</div>
+					<div className="description-container">
+						<p className="project-titles">Project Description</p>
+						<RichText
+							className="project-description"
+							tagName="div"
+							onChange={changeDescription}
+							value={description}
+							placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias accusantium, quidem earum expedita dignissimos dicta numquam suscipit, porro illum atque error obcaecati tempore? Qui, natus."
+						/>
+					</div>
+				</div>
+				<div className="photo-link">
 					<p className="project-titles">Project Link</p>
 					<PlainText
 						className="project-link"
@@ -141,21 +147,30 @@ registerBlockType( 'hw-block/block-hw-block', {
 		return (
 			<div className={props.className}>
 				<div className="text">
-					<h3>{ props.attributes.title }</h3>
+					<h3>{props.attributes.title}</h3>
 				</div>
-				<RichText.Content
-					className="project-description"
-					tagName="div"
-					value={ props.attributes.description }
-					
-				/>
-				<div className="photo-link">
-					<div className="photo">
-						<img src={ props.attributes.imgUrl } />
+				<div className="description-photo">
+					<div className="photo-container">
+						<div className="photo">
+							<img src={props.attributes.imgUrl} />
+						</div>
 					</div>
-					<div className="project-link-container">
-						<a href={ props.attributes.link } target="blank_" className="project-link-button">Project Link</a>
+					<div className="description-container">
+						<RichText.Content
+							className="project-description"
+							tagName="div"
+							value={props.attributes.description}
+						/>
 					</div>
+				</div>
+				<div className="project-link-container">
+					<a
+						href={props.attributes.link}
+						target="blank_"
+						className="project-link-button"
+					>
+						Project Link
+					</a>
 				</div>
 			</div>
 		);
